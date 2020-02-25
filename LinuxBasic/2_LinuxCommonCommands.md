@@ -77,6 +77,27 @@ Linux文件命名规则如下：
 
 * chmod change the permissions mode of a file,改变文件或者目录权限
 
+> u User,文件或目录的拥有者
+
+> g Group,文件或目录的所属群组
+
+> o Other,除文件或目录拥有者和所属群组之外的
+
+> a All,全部用户
+
+> r 读取权限, = 4
+
+> w 写入权限, = 2
+
+> x 执行权限, = 1
+
+> *-* 不具任何权限,=0
+
+> chmod a+x file1 对file1的u g o 设置为可执行权限
+
+> chmod u+w,g+x,o-w file1  对file1设置为u 可写，g可执行，o 可读权限
+
+> chmod 764 file1 对file1设置为 u 全部操作,g 可读写,o 可读
 
 * chown change file ownership,改变文件或目录的所有者
 
@@ -91,9 +112,16 @@ Linux文件命名规则如下：
 
 > which ls
 
-* find 查找文件或目录
+* find [选项] 参数  查找文件或目录
 
-> find /etc *a*.txt
+> find /etc -name *a.txt 查找 /etc目录下 名字 符合 *a.txt的文件  【根据文件或正则表达式进行匹配】
+
+> find . -name "*.txt" -o -name "*.pdf"
+
+> find . ! -name "**.txt" 找出当前目录及子目录下 不为*.txt的文件【否定词参数】
+
+> find . -type [参数类型 f 普通文件  l 符号连接   d 目录   c 字符设备   b 块设备   s 套接字   p Fifo] 根据文件类型进行搜索
+
 
 
 
