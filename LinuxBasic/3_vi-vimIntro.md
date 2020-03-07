@@ -4,9 +4,9 @@
 
 [vim](http://www.vim.org)在官网宣称vim是一个程序开发工具而非文字处理软件。
 
-![vi/vim的布局—中文](/img/vi-vim-cheat-sheet-ch.gif)
+![vi/vim的布局—中文](img/vi-vim-cheat-sheet-ch.gif)
 
-![vi/vim的布局](/img/vi-vim-cheat-sheet.gif)
+![vi/vim的布局](img/vi-vim-cheat-sheet.gif)
 
 ### 3.2 vi/vim的使用
 
@@ -56,5 +56,19 @@ vim分为三种模式，分别是**命令模式/Command mode**,**输入模式/In
 
 按 **ESC**随时可以退出底线命令模式
 
-![三种命令模式的的切换](/img/vim-vi-workmodel.png)
+![三种命令模式的的切换](img/vim-vi-workmodel.png)
+
+
+### 3.3 vi/vim使用实例
+
+vim demo.txt，即可进入**命令模式**
+
+i 进入 **插入模式**，对文件内容进行编辑
+
+ESC 返回 **m命令模式**，
+
+:wq 保存并退出
+
+
+### 3.4 vi/vim 按键说明
 
