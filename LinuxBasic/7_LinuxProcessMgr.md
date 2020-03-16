@@ -151,7 +151,20 @@ ps 应用实例
 
 查看被挂起的进程 jobs
 
-#### top
+#### top  进程状态显示和进程控制
+
+|参数|含义|
+|------|------|
+|d|指定刷新的时间间隔|
+|c|显示整个命令行而不仅仅显示命令行|
+|u|查看指定用户进程|
+|k|终止执行中的进程|
+|h or ?|获得帮助|
+|r|重新设置进程优先级|
+|r|重新设置进程优先级|
+|s|改变刷新的时间间隔|
+|W|将当前设置写入~/.toprc文件中|
+
 
 
 ### 7.3 计划任务
@@ -159,8 +172,106 @@ ps 应用实例
 
 #### at
 
+安排（一个或多个）作业在某一时刻执行一次
+
+> at [-f 文件名] 时间
+
+> at -d or atrm 删除队列中的任务
+
+> at -l or atq 查看队列中的任务
+
+1. 绝对计时方法
+
+> midnight noon teatime
+
+> hh:mm [today]
+
+> hh:mm tomorrow
+
+> hh:mm 星期几
+
+> hh:mm MM/DD/YY
+
+2. 相对计时方法
+
+> now + n minutes
+
+> now + n hours
+
+> now + n days
+
+3. 交互方式
+
+> at 9:00
+
+> at -f at.script 9:00  or at < at.script 9:00
+
+4. at配置文件
+
+限制哪些用户可以使用at命令，/etc/at.allow,/etc/at.deny
+
+at.allow存在，其中的用户能执行at
+
+at.deny存在，不在其中的用户能执行at
+
+两者皆不存在，只有root能执行at
+
+两者都存在，且为空，所有用户都能执行at
 
 #### batch
 
+安排（一个或多个）作业在系统负载不重时(一般是指平均负载降到0.8)执行一次
+
+用法同 at
 
 #### cron
+
+安排周期性运行的作业
+
+用于生成 cron进程所需的crontab文件
+
+> crontab -l 显示当前的crontab
+
+> crontab -r 删除当前的crontab
+
+> crontab -e 编辑当前的crontab
+
+crontab文件格式如下
+
+minute hour day-of-month month-of-year day-of-week commands
+
+其中具体释义如下：
+
+|项|含义|
+|------|------|
+|minute|一小时中的哪一分钟[0-59]|
+|hour|一天中的哪个小时[0-23]|
+|day-of-month|一月中的哪一天[1-31]|
+|month-of-year|一年中的哪一月[1-12]|
+|day-of-week|一周中的哪一天[0-6]|
+|commands|执行的命令|
+
+填写注意事项
+
+* 选项不能为空，不知道咋填 填 **\***
+
+* 每个时间段可以指定多个值，不连续的用 , ，连续的用 - 
+
+* 命令应该给出 绝对路径
+
+* 用户 应具有运行对应命令的权限
+
+
+crontab文件建立好之后，可以在/var/spool/cron目录确认
+
+crontab命令的限制用户使用 可以利用 /etc/cron.allow /etc/cron.deny来指定
+
+
+### 7.4 进程处理方式
+
+#### standalone 独立运行
+
+
+#### xinetd 进程托管
+
+#### atd crond 计划任务
